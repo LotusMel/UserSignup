@@ -9,8 +9,11 @@ namespace UserSignup.Controllers
 {
     public class UserController : Controller
     {
+        static string displayName;
+
         public IActionResult Index()
         {
+            ViewBag.Welcome = "Welcome" + displayName;
             return View();
         }
 
@@ -37,7 +40,7 @@ namespace UserSignup.Controllers
                 return View(user);
             }
 
-            ViewBag.Welcome = "Welcome, " + user.Username + "!";
+            displayName = ", " + user.Username + "!";
 
             return Redirect("/User");
         }
